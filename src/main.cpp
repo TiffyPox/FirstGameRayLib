@@ -7,11 +7,14 @@ int main(void)
     const int screenWidth = 800;
     const int screenHeight = 450;
     const char menuText[] = "Tiff's Game!";
-    const float fontSize = 50.0f;
+    const float fontSize = 40.0f;
+    const float ballRadius = 30.0f;
     
     InitWindow(screenWidth, screenHeight, "Hello Github");
 
     Vector2 ballPosition = { (float)screenWidth / 2, (float)screenHeight / 2 }; 
+
+    Vector2 paddlePosition = { 20, screenHeight / 2 - 80 };
 
     InitAudioDevice();
 
@@ -21,7 +24,7 @@ int main(void)
 
     Vector2 textSize = MeasureTextEx(font, menuText, fontSize, 0);
 
-    Ball ball{};
+    Vector2 ballSpeed = {4.0f, 4.0f};
 
     SetTargetFPS(60);
 
@@ -37,16 +40,29 @@ int main(void)
 
         ClearBackground(GREEN);
 
-        if (IsKeyDown(KEY_RIGHT)) ballPosition.x += 2.0f;
-        if (IsKeyDown(KEY_LEFT)) ballPosition.x -= 2.0f;
-        if (IsKeyDown(KEY_UP)) ballPosition.y -= 2.0f;
-        if (IsKeyDown(KEY_DOWN)) ballPosition.y += 2.0f;
+        ballPosition.x += ballSpeed.x;
+        ballPosition.y += ballSpeed.y;
+        
+        if ((ballPosition.x >= (screenWidth - ballRadius)) || (ballPosition.x <= ballRadius)) 
+        {
+            ballSpeed.x *= -1.0f;
+        }
 
-        DrawCircleGradient(ballPosition.x, ballPosition.y, 30, GOLD, MAROON);
+        if ((ballPosition.y >= (screenHeight - ballRadius)) || (ballPosition.y <= ballRadius)) 
+        {
+            ballSpeed.y *= -1.0f;
+        }
 
-        DrawRectangle(20, screenHeight / 2 - 80, 30, 160, WHITE);
+        if (IsKeyDown(KEY_UP)) paddlePosition.y -= 2.0f;
+        if (IsKeyDown(KEY_DOWN)) paddlePosition.y += 2.0f;
 
-        DrawText(menuText, textPos, screenHeight / 2 - textSize.y * 0.5f, fontSize, DARKGREEN);
+        DrawCircleGradient(ballPosition.x, ballPosition.y, ballRadius, GOLD, MAROON);
+
+        DrawRectangle(paddlePosition.x, paddlePosition.y, 30, 160, WHITE);
+
+        DrawRectangle(750, screenHeight / 2 - 80, 30, 160, WHITE);
+
+        DrawText(menuText, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
 
         EndDrawing();
     }

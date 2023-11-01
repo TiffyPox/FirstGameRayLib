@@ -1,4 +1,5 @@
 #include "ball.h"
+#include "raylib.h"
 
 void Ball::Update()
 {
