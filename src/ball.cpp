@@ -19,24 +19,24 @@ bool isReleased;
 void Ball::Begin()
 {
    isReleased = true;
-   
-   x += speedX;
-   y += speedY;
-   
-   if ((x >= (GetScreenWidth() - radius)) || (x <= radius)) 
-   {
-    speedX *= -1.0f;
-   }
-   
-   if ((y >= (GetScreenHeight() - radius)) || (y <= radius)) 
-   {
-    speedY *= -1.0f;
-   }
 }
 
 void Ball::Update()
 {
+    x += speedX;
+    y += speedY;
 
+    if ((x >= (GetScreenWidth() - radius)) || (x <= radius)) 
+    {
+        speedX *= -1.0f;
+    }
+
+    if ((y >= (GetScreenHeight() - radius)) || (y <= radius)) 
+    {
+        speedY *= -1.0f;
+    }
+
+    // To do: check for collision with paddle
 }
 
 void Ball::Draw()
