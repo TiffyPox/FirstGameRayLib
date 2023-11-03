@@ -1,10 +1,11 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "ball.h"
+#include "paddle.h"
 
-Rectangle GetRect(Rectangle paddle)
+Rectangle GetRect(Paddle paddle)
 {
-    return Rectangle{ paddle.x - paddle.width / 2, paddle.y - paddle.height / 2, paddle.width, paddle.height };
+    return Rectangle{ paddle.x - paddle.width / 2, paddle.y - paddle.height / 2, (float)paddle.width, (float)paddle.height };
 }
 
 int main(void)
@@ -27,12 +28,7 @@ int main(void)
 
     Ball ball;
 
-    // To Do: Create Paddle Class
-    Rectangle paddle;
-    paddle.x = 20;
-    paddle.y = screenHeight / 2 - 80;
-    paddle.width = 30;
-    paddle.height = 160;
+    Paddle paddle;
 
     SetTargetFPS(60);
 
@@ -50,6 +46,9 @@ int main(void)
 
         ClearBackground(GREEN);
 
+        ball.Draw();
+        paddle.Draw();
+
         if (!ball.isReleased)
         {
             DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
@@ -58,11 +57,7 @@ int main(void)
         if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
         if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
 
-        ball.Draw();
-
         ball.Update();
-
-        DrawRectangle(paddle.x, paddle.y, 30, 160, WHITE);
 
         DrawRectangle(750, screenHeight / 2 - 80, 30, 160, WHITE);
 

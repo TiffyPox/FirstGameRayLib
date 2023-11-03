@@ -5,8 +5,8 @@ class Ball
 {
 public: 
 
-    bool isReleased;
     Vector2 startPosition{};
+    bool isReleased;
     float x;
     float y;
     float radius;

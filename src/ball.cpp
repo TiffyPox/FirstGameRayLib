@@ -2,8 +2,8 @@
 #include "raylib.h"
 
 //int random = GetRandomValue(1,2);
-bool isReleased;
 Vector2 startPosition{};
+bool isReleased;
 
 Ball::Ball()
 {
@@ -49,5 +49,5 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    DrawCircleGradient((int) x, (int) y, radius, GOLD, MAROON);
+    DrawCircleGradient(x, y, radius, GOLD, MAROON);
 }
