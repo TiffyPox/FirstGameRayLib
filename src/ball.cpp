@@ -17,7 +17,7 @@ Ball::Ball()
 void Ball::Begin()
 {
    isReleased = false;
-   
+
    startPosition = {(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
 }
 
@@ -49,5 +49,5 @@ void Ball::Update()
 
 void Ball::Draw()
 {
-    DrawCircleGradient((int) x, (int)y, radius, GOLD, MAROON);
+    DrawCircleGradient((int) x, (int) y, radius, GOLD, MAROON);
 }
