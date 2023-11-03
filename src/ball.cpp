@@ -1,7 +1,9 @@
 #include "ball.h"
 #include "raylib.h"
 
-//int random = GetRandomValue(1, 3);
+//int random = GetRandomValue(1,2);
+bool isReleased;
+Vector2 startPosition{};
 
 Ball::Ball()
 {
@@ -12,28 +14,34 @@ Ball::Ball()
     speedY = 4.0f;
 }
 
-bool isReleased;
-
-//Vector2 startPosition {};
-
 void Ball::Begin()
 {
-   isReleased = true;
+   isReleased = false;
+   
+   startPosition = {(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
 }
 
 void Ball::Update()
 {
-    x += speedX;
-    y += speedY;
-
-    if ((x >= (GetScreenWidth() - radius)) || (x <= radius)) 
+    if (IsKeyPressed(KEY_SPACE))
     {
-        speedX *= -1.0f;
+        isReleased = true;
     }
 
-    if ((y >= (GetScreenHeight() - radius)) || (y <= radius)) 
+    if (isReleased)
     {
-        speedY *= -1.0f;
+        x += speedX;
+        y += speedY;
+
+        if ((x >= (GetScreenWidth() - radius)) || (x <= radius)) 
+        {
+            speedX *= -1.0f;
+        }
+
+        if ((y >= (GetScreenHeight() - radius)) || (y <= radius)) 
+        {
+            speedY *= -1.0f;
+        }
     }
 
     // To do: check for collision with paddle

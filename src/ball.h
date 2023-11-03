@@ -1,9 +1,12 @@
 #pragma once
+#include "raylib.h"
 
 class Ball
 {
 public: 
 
+    bool isReleased;
+    Vector2 startPosition{};
     float x;
     float y;
     float radius;

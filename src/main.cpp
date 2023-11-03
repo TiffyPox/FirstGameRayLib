@@ -11,7 +11,8 @@ int main(void)
 {
     const int screenWidth = 800;
     const int screenHeight = 450;
-    const char menuText[] = "Tiff's Game!";
+    const char title[] = "Tiff's Game!";
+    const char startText[] = "Press [SPACE] to start!";
     const float fontSize = 40.0f;
     
     InitWindow(screenWidth, screenHeight, "Hello Github");
@@ -22,7 +23,7 @@ int main(void)
 
     Font font = LoadFont("../res/menuFont.otf");
 
-    Vector2 textSize = MeasureTextEx(font, menuText, fontSize, 0);
+    Vector2 textSize = MeasureTextEx(font, title, fontSize, 0);
 
     Ball ball;
 
@@ -49,6 +50,11 @@ int main(void)
 
         ClearBackground(GREEN);
 
+        if (!ball.isReleased)
+        {
+            DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
+        }
+
         if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
         if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
 
@@ -60,7 +66,7 @@ int main(void)
 
         DrawRectangle(750, screenHeight / 2 - 80, 30, 160, WHITE);
 
-        DrawText(menuText, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
+        DrawText(title, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
 
          if (CheckCollisionCircleRec(Vector2{ ball.x,ball.y }, ball.radius, GetRect(paddle)))
         {
