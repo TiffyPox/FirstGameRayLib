@@ -44,47 +44,45 @@ int main(void)
     Ball ball;
 
     ball.Begin();
-    
+
+    while (!WindowShouldClose())
     {
-        while (!WindowShouldClose())
+        UpdateMusicStream(music);
+
+        BeginDrawing();
+
+        ClearBackground(GREEN);
+
+        DrawText(title, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
+
+        ball.Draw();
+        paddle.Draw();
+        paddle2.Draw();
+
+        // To do: Move ball and paddle logic to separate game screen
+        if (!ball.isReleased)
         {
-            UpdateMusicStream(music);
-
-            BeginDrawing();
-
-            ClearBackground(GREEN);
-
-            DrawText(title, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
-
-            ball.Draw();
-            paddle.Draw();
-            paddle2.Draw();
-
-            // To do: Move ball and paddle logic to separate game screen
-            if (!ball.isReleased)
-            {
-                DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
-            }
-
-            if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
-            if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
-
-            if (IsKeyDown(KEY_W)) paddle2.y -= 2.0f;
-            if (IsKeyDown(KEY_S)) paddle2.y += 2.0f;
-
-            ball.Update();
-
-            // To do: fix collision detection
-            if (CheckCollisionCircleRec(Vector2{ ball.x,ball.y }, ball.radius, GetRect(paddle)))
-            {
-                if (ball.speedX > 0)
-                {
-                    ball.speedX *= -1.1f;
-                }
-            }
-
-            EndDrawing();
+            DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
         }
+
+        if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
+        if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
+
+        if (IsKeyDown(KEY_W)) paddle2.y -= 2.0f;
+        if (IsKeyDown(KEY_S)) paddle2.y += 2.0f;
+
+        ball.Update();
+
+        // To do: fix collision detection
+        if (CheckCollisionCircleRec(Vector2{ ball.x,ball.y }, ball.radius, GetRect(paddle)))
+        {
+            if (ball.speedX > 0)
+            {
+                ball.speedX *= -1.1f;
+            }
+        }
+
+        EndDrawing();
     }
 
     CloseWindow();
