@@ -15,63 +15,76 @@ int main(void)
     const char title[] = "Tiff's Game!";
     const char startText[] = "Press [SPACE] to start!";
     const float fontSize = 40.0f;
-    
+
     InitWindow(screenWidth, screenHeight, "Hello Github");
 
     InitAudioDevice();
-
-    Music music = LoadMusicStream("../res/menuMusic.mp3");
 
     Font font = LoadFont("../res/menuFont.otf");
 
     Vector2 textSize = MeasureTextEx(font, title, fontSize, 0);
 
-    Ball ball;
+    int textPos = screenWidth / 2.0f - textSize.x / 2.0f;
 
     Paddle paddle;
+    Paddle paddle2;
+    
+    // To do: create separate game screen to initialize paddles
+    paddle.x = 20.0f;
+    paddle.y = screenHeight / 2.0f - 80.0f;
+    paddle2.x = 750.0f;
+    paddle2.y = screenHeight / 2 - 80;
+
+    Music music = LoadMusicStream("../res/menuMusic.mp3");
 
     SetTargetFPS(60);
 
     PlayMusicStream(music);
     
-    int textPos = screenWidth / 2.0f - textSize.x / 2.0f;
+    Ball ball;
 
     ball.Begin();
-
-    while (!WindowShouldClose())
+    
     {
-        UpdateMusicStream(music);
-
-        BeginDrawing();
-
-        ClearBackground(GREEN);
-
-        ball.Draw();
-        paddle.Draw();
-
-        if (!ball.isReleased)
+        while (!WindowShouldClose())
         {
-            DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
-        }
+            UpdateMusicStream(music);
 
-        if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
-        if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
+            BeginDrawing();
 
-        ball.Update();
+            ClearBackground(GREEN);
 
-        DrawRectangle(750, screenHeight / 2 - 80, 30, 160, WHITE);
+            DrawText(title, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
 
-        DrawText(title, textPos, screenHeight / 2 - 200, fontSize, DARKGREEN);
+            ball.Draw();
+            paddle.Draw();
+            paddle2.Draw();
 
-         if (CheckCollisionCircleRec(Vector2{ ball.x,ball.y }, ball.radius, GetRect(paddle)))
-        {
-            if (ball.speedX > 0)
+            // To do: Move ball and paddle logic to separate game screen
+            if (!ball.isReleased)
             {
-                ball.speedX *= -1.1f;
+                DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
             }
-        }
 
-        EndDrawing();
+            if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
+            if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
+
+            if (IsKeyDown(KEY_W)) paddle2.y -= 2.0f;
+            if (IsKeyDown(KEY_S)) paddle2.y += 2.0f;
+
+            ball.Update();
+
+            // To do: fix collision detection
+            if (CheckCollisionCircleRec(Vector2{ ball.x,ball.y }, ball.radius, GetRect(paddle)))
+            {
+                if (ball.speedX > 0)
+                {
+                    ball.speedX *= -1.1f;
+                }
+            }
+
+            EndDrawing();
+        }
     }
 
     CloseWindow();

@@ -3,8 +3,8 @@
 
 Paddle::Paddle()
 {
-    x = 20.0f;
-    y = GetScreenHeight() / 2.0f - 80.0f;
+    x = 0;
+    y = 0;
     width = 30;
     height = 160;
 }
