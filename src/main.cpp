@@ -5,7 +5,10 @@
 
 Rectangle GetRect(Paddle paddle)
 {
-    return Rectangle{ paddle.x - paddle.width / 2, paddle.y - paddle.height / 2, (float)paddle.width, (float)paddle.height };
+    return Rectangle
+    { 
+        paddle.x - paddle.width / 2, paddle.y - paddle.height / 2, (float)paddle.width, (float)paddle.height 
+    };
 }
 
 int main(void)
@@ -34,6 +37,8 @@ int main(void)
     paddle.y = screenHeight / 2.0f - 80.0f;
     paddle2.x = 750.0f;
     paddle2.y = screenHeight / 2 - 80;
+    const float bounds = paddle.width / 2.0f;
+    const float bounds2 = paddle2.width / 2.0f;
 
     Music music = LoadMusicStream("../res/menuMusic.mp3");
 
@@ -65,11 +70,24 @@ int main(void)
             DrawText(startText, textPos, screenHeight / 2 - -150, 20.0f, BLACK);
         }
 
-        if (IsKeyDown(KEY_UP)) paddle.y -= 2.0f;
-        if (IsKeyDown(KEY_DOWN)) paddle.y += 2.0f;
+        // paddle 1
+        if (IsKeyDown(KEY_W)) paddle.y -= 2.0f;
+        if (IsKeyDown(KEY_S)) paddle.y += 2.0f;
 
-        if (IsKeyDown(KEY_W)) paddle2.y -= 2.0f;
-        if (IsKeyDown(KEY_S)) paddle2.y += 2.0f;
+        if ((paddle.y - bounds) < 0)
+        {
+            paddle.y = bounds;
+        } 
+
+        // need to fix
+        if ((paddle.y + paddle.height) > screenHeight)
+        {
+            paddle.y = screenHeight - bounds;
+        }
+
+        // paddle 2
+        if (IsKeyDown(KEY_UP)) paddle2.y -= 2.0f;
+        if (IsKeyDown(KEY_DOWN)) paddle2.y += 2.0f;
 
         ball.Update();
 
