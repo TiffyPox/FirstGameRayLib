@@ -37,8 +37,6 @@ int main(void)
     paddle.y = screenHeight / 2.0f - 80.0f;
     paddle2.x = 750.0f;
     paddle2.y = screenHeight / 2 - 80.0f;
-    const float bounds = paddle.width / 2.0f;
-    const float bounds2 = paddle2.width / 2.0f;
 
     Music music = LoadMusicStream("../res/menuMusic.mp3");
 
@@ -74,13 +72,11 @@ int main(void)
         if (IsKeyDown(KEY_W)) paddle.y -= 2.0f;
         if (IsKeyDown(KEY_S)) paddle.y += 2.0f;
 
-        if ((paddle.y - bounds) < 0)
+        if (paddle.y < 0)
         {
-            paddle.y = bounds;
-        }
-
-        // need to fix
-        if (paddle.y > screenHeight - paddle.height)
+            paddle.y = 0;
+        } 
+        else if (paddle.y > screenHeight - paddle.height)
         {
             paddle.y = screenHeight - paddle.height;
         }
