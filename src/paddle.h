@@ -3,18 +3,22 @@
 
 class Paddle
 {
+    friend class InputController;
+    
 public:
-
-    float x;
-    float y;
-    int width;
-    int height;
-
-    Paddle();
+    Paddle(float x, float y, int paddleWidth, int paddleHeight, Color color);
 
     void Begin();
 
     void Update();
+    void ConstrainPaddle(float screenHeight, float screenWidth);
 
     void Draw();
+
+private:
+    float x;
+    float y;
+    int width;
+    int height;
+    Color color;
 };
