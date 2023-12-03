@@ -5,7 +5,6 @@ class Ball
 {
 public: 
 
-    Vector2 startPosition{};
     bool isReleased;
     float x;
     float y;

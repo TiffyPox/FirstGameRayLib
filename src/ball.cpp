@@ -1,8 +1,6 @@
 #include "ball.h"
 #include "raylib.h"
 
-//int random = GetRandomValue(1,2);
-Vector2 startPosition{};
 bool isReleased;
 
 Ball::Ball()
@@ -17,8 +15,6 @@ Ball::Ball()
 void Ball::Begin()
 {
    isReleased = false;
-
-   startPosition = {(float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2};
 }
 
 void Ball::Update()
