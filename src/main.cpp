@@ -57,8 +57,7 @@ int main(void)
         ball.Draw();
         paddle.Draw();
         paddle2.Draw();
-
-        // To do: Move ball logic to separate game screen
+        
         if (!ball.isReleased)
         {
             DrawText(startText, textPosXPressSpace, textPosYPressSpace, pressSpaceFontSize, BLACK);
