@@ -36,7 +36,7 @@ int main(void)
     paddle.x = 20.0f;
     paddle.y = screenHeight / 2.0f - 80.0f;
     paddle2.x = 750.0f;
-    paddle2.y = screenHeight / 2 - 80;
+    paddle2.y = screenHeight / 2 - 80.0f;
     const float bounds = paddle.width / 2.0f;
     const float bounds2 = paddle2.width / 2.0f;
 
@@ -77,12 +77,12 @@ int main(void)
         if ((paddle.y - bounds) < 0)
         {
             paddle.y = bounds;
-        } 
+        }
 
         // need to fix
-        if ((paddle.y + paddle.height) > screenHeight)
+        if (paddle.y > screenHeight - paddle.height)
         {
-            paddle.y = screenHeight - bounds;
+            paddle.y = screenHeight - paddle.height;
         }
 
         // paddle 2
