@@ -57,7 +57,7 @@ int main(void)
         ball.Draw();
         paddle.Draw();
         paddle2.Draw();
-        
+
         if (!ball.isReleased)
         {
             DrawText(startText, textPosXPressSpace, textPosYPressSpace, pressSpaceFontSize, BLACK);

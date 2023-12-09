@@ -8,7 +8,6 @@ Paddle::Paddle(float x, float y, int paddleWidth, int paddleHeight, Color color)
     this->width = paddleWidth;
     this->height = paddleHeight;
     this->color = color;
-
 }
 
 void Paddle::Begin()

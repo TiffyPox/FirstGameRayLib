@@ -1,8 +1,6 @@
 #include "ball.h"
 #include "raylib.h"
 
-bool isReleased;
-
 Ball::Ball()
 {
     x = GetScreenWidth() / 2.0f;
@@ -39,8 +37,14 @@ void Ball::Update()
             speedY *= -1.0f;
         }
     }
+}
 
-    // To do: check for collision with paddle
+bool Ball::CheckForPaddle(Paddle p1, Paddle p2)
+{
+    if (!isReleased)
+    {
+        return false;
+    }
 }
 
 void Ball::Draw()
