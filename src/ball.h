@@ -10,6 +10,7 @@ public:
     bool isReleased;
     float x;
     float y;
+    Vector2 center;
     float radius;
     float speedX;
     float speedY;

@@ -74,6 +74,8 @@ int main(void)
         player1Controller.Move();
         player2Controller.Move();
 
+        ball.CheckForPaddle(paddle, paddle2);
+
         EndDrawing();
     }
 
