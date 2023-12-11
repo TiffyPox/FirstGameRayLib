@@ -8,6 +8,7 @@ class Ball
 public: 
 
     bool isReleased;
+    bool isCollided;
     float x;
     float y;
     Vector2 center;

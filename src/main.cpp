@@ -68,13 +68,13 @@ int main(void)
         paddle.Update();
         paddle2.Update();
 
+        ball.CheckForPaddle(paddle, paddle2);
+
         paddle.ConstrainPaddle( screenHeight, screenWidth );
         paddle2.ConstrainPaddle( screenHeight, screenWidth );
 
         player1Controller.Move();
         player2Controller.Move();
-
-        ball.CheckForPaddle(paddle, paddle2);
 
         EndDrawing();
     }

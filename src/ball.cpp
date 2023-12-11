@@ -48,12 +48,10 @@ bool Ball::CheckForPaddle(Paddle p1, Paddle p2)
         return false;
     }
 
-    bool isCollided = CheckCollisionCircleRec(center, radius, p1.GetBounds());
-
-    if (isCollided == true)
+    if (CheckCollisionCircleRec(center, radius, p1.GetBounds()) ||
+    CheckCollisionCircleRec(center, radius, p2.GetBounds()) == true)
     {
-        speedX = 0.0f;
-        speedY = 0.0f;
+        return true;
     }
 }
 
