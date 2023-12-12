@@ -6,7 +6,7 @@ Ball::Ball()
 {
     x = GetScreenWidth() / 2.0f;
     y = GetScreenHeight() / 2.0f;
-    Vector2 center = {x, y};
+    isCollided = false;
     radius = 30.0f;
     speedX = 4.0f;
     speedY = 4.0f;
@@ -48,14 +48,31 @@ bool Ball::CheckForPaddle(Paddle p1, Paddle p2)
         return false;
     }
 
-    if (CheckCollisionCircleRec(center, radius, p1.GetBounds()) ||
-    CheckCollisionCircleRec(center, radius, p2.GetBounds()) == true)
+    Vector2 center = {x, y};
+
+    // check for collision with paddle 1
+    if (CheckCollisionCircleRec(center, radius, p1.GetBounds()))
     {
-        return true;
+        isCollided = true;
+
+        speedX *= -1.1f;
+    }
+
+    // check for collision with paddle 2
+    if (CheckCollisionCircleRec(center, radius, p2.GetBounds()))
+    {
+        isCollided = true;
+
+        speedX *= -1.1f;
     }
 }
 
 void Ball::Draw()
 {
+    if (isCollided)
+    {
+        DrawText("COLLIDED!", GetScreenWidth() / 2, GetScreenHeight() / 2, 50, BLACK);
+    }
+
     DrawCircleGradient(x, y, radius, GOLD, MAROON);
 }

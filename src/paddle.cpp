@@ -40,4 +40,7 @@ Rectangle Paddle::GetBounds()
 void Paddle::Draw()
 {
     DrawRectangle(x, y, width, height, color);
+
+    //Rectangle myBounds = GetBounds();
+    //DrawRectangleLines(myBounds.x, myBounds.y, myBounds.width, myBounds.height, RED);
 }
