@@ -26,7 +26,7 @@ public:
 
     void Update();
 
-    bool CheckForPaddle(Paddle p1, Paddle p2);
+    bool CheckForPaddle(const Paddle& p1, const Paddle& p2);
 
     void Draw();
 };

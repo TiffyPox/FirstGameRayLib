@@ -14,7 +14,7 @@ public:
     
     void ConstrainPaddle(float screenHeight, float screenWidth);
 
-    Rectangle GetBounds();
+    Rectangle GetBounds() const;
 
     void Draw();
 

@@ -32,7 +32,7 @@ void Paddle::ConstrainPaddle(float screenHeight, float screenWidth)
     }
 }
 
-Rectangle Paddle::GetBounds()
+Rectangle Paddle::GetBounds() const
 {
     return Rectangle {x, y, (float) width, (float) height};
 }
@@ -40,7 +40,4 @@ Rectangle Paddle::GetBounds()
 void Paddle::Draw()
 {
     DrawRectangle(x, y, width, height, color);
-
-    //Rectangle myBounds = GetBounds();
-    //DrawRectangleLines(myBounds.x, myBounds.y, myBounds.width, myBounds.height, RED);
 }

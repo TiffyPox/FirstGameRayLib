@@ -62,6 +62,11 @@ int main(void)
         {
             DrawText(startText, textPosXPressSpace, textPosYPressSpace, pressSpaceFontSize, BLACK);
         }
+        else
+        {
+            player1Controller.Move();
+            player2Controller.Move();
+        }
 
         ball.Update();
 
@@ -72,9 +77,6 @@ int main(void)
 
         paddle.ConstrainPaddle( screenHeight, screenWidth );
         paddle2.ConstrainPaddle( screenHeight, screenWidth );
-
-        player1Controller.Move();
-        player2Controller.Move();
 
         EndDrawing();
     }
