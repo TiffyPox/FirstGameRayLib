@@ -27,6 +27,8 @@ public:
     void Update();
 
     bool CheckForPaddle(const Paddle& p1, const Paddle& p2);
+    
+    void Reset();
 
     void Draw();
 };

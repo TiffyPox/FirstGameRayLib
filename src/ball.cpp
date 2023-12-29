@@ -34,11 +34,7 @@ void Ball::Update()
                         x = GetScreenWidth() / 2.f;
             y = GetScreenHeight() / 2.f;
 
-            // Reset the ball to center
-            x = GetScreenWidth() / 2.f;
-            y = GetScreenHeight() / 2.f;
-            speedX = 4.0f;
-            speedY = 4.0f;
+            Reset();
         }
 
         if ((y >= (GetScreenHeight() - radius)) || (y <= radius)) 
@@ -80,12 +76,17 @@ bool Ball::CheckForPaddle(const Paddle& p1, const Paddle& p2)
     }
 }
 
+void Ball::Reset()
+{
+    x = GetScreenWidth() / 2.f;
+            y = GetScreenHeight() / 2.f;
+            speedX = 4.0f;
+            speedY = 4.0f;
+
+    isReleased = false;
+}
+
 void Ball::Draw()
 {
-    if (isCollided)
-    {
-        DrawText("COLLIDED!", GetScreenWidth() / 2, GetScreenHeight() / 2, 50, BLACK);
-    }
-
     DrawCircleGradient(x, y, radius, GOLD, MAROON);
 }
