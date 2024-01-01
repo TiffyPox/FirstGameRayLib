@@ -18,8 +18,6 @@ public:
 
     void Draw();
 
-    Vector2 startPosition;
-
 private:
     float x;
     float y;

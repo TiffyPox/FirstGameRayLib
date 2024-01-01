@@ -6,7 +6,7 @@ Ball::Ball()
     x = GetScreenWidth() / 2.0f;
     y = GetScreenHeight() / 2.0f;
     isCollided = false;
-    radius = 30.0f;
+    radius = 20.0f;
     speedX = 4.0f;
     speedY = 4.0f;
 }
@@ -88,5 +88,5 @@ void Ball::Reset()
 
 void Ball::Draw()
 {
-    DrawCircleGradient(x, y, radius, GOLD, MAROON);
+    DrawCircle(x, y, radius, DARKPURPLE);
 }

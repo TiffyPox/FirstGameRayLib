@@ -50,9 +50,9 @@ int main(void)
 
         BeginDrawing();
 
-        ClearBackground(GREEN);
+        ClearBackground(PURPLE);
 
-        DrawText(title, textPosTitleX, textPosTitleY, fontSize, DARKGREEN);
+        DrawLine(screenWidth / 2, 0, screenWidth / 2, screenHeight, {0, 0, 0, 50});
 
         ball.Draw();
         paddle.Draw();
@@ -60,7 +60,11 @@ int main(void)
 
         if (!ball.isReleased)
         {
+            DrawText(title, textPosTitleX, textPosTitleY, fontSize, BLACK);
             DrawText(startText, textPosXPressSpace, textPosYPressSpace, pressSpaceFontSize, BLACK);
+
+            paddle = { paddlePadding, screenHeight / 2.0f - paddleHeight / 2.0f, paddleWidth, paddleHeight, WHITE };
+            paddle2 = { screenWidth - paddleWidth - paddlePadding, screenHeight / 2.0f - paddleHeight / 2.0f, paddleWidth, paddleHeight, WHITE };
         }
         else
         {
