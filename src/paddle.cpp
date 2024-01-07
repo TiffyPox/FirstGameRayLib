@@ -37,11 +37,6 @@ Rectangle Paddle::GetBounds() const
     return Rectangle {x, y, (float) width, (float) height};
 }
 
-void Paddle::AwardPoint(int point)
-{
-    _points += point;
-}
-
 void Paddle::Draw()
 {
     DrawRectangle(x, y, width, height, color);

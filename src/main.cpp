@@ -54,12 +54,6 @@ int main(void)
 
         DrawLine(screenWidth / 2.0f, 0, screenWidth / 2.0f, screenHeight, {0, 0, 0, 50});
 
-        const char* p1Points = (const char*)paddle._points;
-        const char* p2Points = (const char*)paddle2._points;
-
-        DrawText(p1Points, screenHeight / 2.0f, screenWidth / 2.0f, 15, BLACK);
-        DrawText(p2Points, screenHeight / 2.0f + 50.0f, screenWidth / 2.0f, 15, BLACK);
-
         ball.Draw();
         paddle.Draw();
         paddle2.Draw();

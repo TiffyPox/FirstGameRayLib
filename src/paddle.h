@@ -8,8 +8,6 @@ class Paddle
 public:
     Paddle(float x, float y, int paddleWidth, int paddleHeight, Color color);
 
-    int _points;
-
     void Begin();
 
     void Update();
@@ -17,8 +15,6 @@ public:
     void ConstrainPaddle(float screenHeight, float screenWidth);
 
     Rectangle GetBounds() const;
-
-    void AwardPoint(int point);
 
     void Draw();
 

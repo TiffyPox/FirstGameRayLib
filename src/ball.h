@@ -22,8 +22,6 @@ public:
 
     Paddle* p2 { nullptr };
 
-    Paddle lastHit;
-
     void Begin();
 
     void Update();

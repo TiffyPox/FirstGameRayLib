@@ -59,10 +59,8 @@ bool Ball::CheckForPaddle(const Paddle& p1, const Paddle& p2)
         if(x - radius >= p1.GetBounds().x + p1.GetBounds().width / 2.f)
         {
             isCollided = true;
-            lastHit = p1;
             speedX *= -1.1f;
             x = p1.GetBounds().x + p1.GetBounds().width + radius; // Correction
-            lastHit.AwardPoint(1);
         }
     }
 
@@ -72,10 +70,8 @@ bool Ball::CheckForPaddle(const Paddle& p1, const Paddle& p2)
         if(x + radius <= p2.GetBounds().x + p2.GetBounds().width / 2.f)
         {
             isCollided = true;
-            lastHit = p2;
             speedX *= -1.1f;
             x = p2.GetBounds().x - radius; // Correction
-            lastHit.AwardPoint(1);
         }
     }
 }
