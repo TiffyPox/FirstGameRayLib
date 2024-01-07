@@ -9,6 +9,7 @@ Ball::Ball()
     radius = 20.0f;
     speedX = 4.0f;
     speedY = 4.0f;
+    int point = 0;
 }
 
 void Ball::Begin()
@@ -34,6 +35,7 @@ void Ball::Update()
                         x = GetScreenWidth() / 2.f;
             y = GetScreenHeight() / 2.f;
 
+            point++;
             Reset();
         }
 

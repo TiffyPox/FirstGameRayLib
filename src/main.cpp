@@ -82,6 +82,8 @@ int main(void)
         paddle.ConstrainPaddle( screenHeight, screenWidth );
         paddle2.ConstrainPaddle( screenHeight, screenWidth );
 
+        DrawText(TextFormat("Points: %i", ball.point), 200, 200, 20, BLACK);
+
         EndDrawing();
     }
 

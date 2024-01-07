@@ -15,6 +15,7 @@ public:
     float radius;
     float speedX;
     float speedY;
+    int point;
 
     Ball();
 
